@@ -18,7 +18,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-
+import { API_URL } from "../../config/index";
 
 
 
@@ -74,7 +74,7 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
         <CardMedia
           component="img"
           height="450"
-          image={`http://localhost:5001/api/event-content/${currentTutorial.fileName}`}
+          image={`${API_URL}event-content/${currentTutorial.fileName}`}
           alt="green iguana"
         />
       {  /*

@@ -59,11 +59,12 @@ const AddCollection = () => {
   };
 
   const [tags, setTags] = useState([
-    { id: 1, name: 'tag1' },
-    { id: 2, name: 'tag2' },
-    { id: 3, name: 'tag3' },
-    { id: 4, name: 'tag4' },
-    { id: 5, name: 'tag5' }
+    { id: 1, name: 'molecular-biology' },
+    { id: 2, name: 'micro-biology' },
+    { id: 3, name: 'biotechnology' },
+    { id: 4, name: 'analytical' },
+    { id: 5, name: 'food-nutrition' },
+    { id: 5, name: 'general-facilities' }
     // Add more tags as needed
   ]);
   

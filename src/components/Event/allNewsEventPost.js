@@ -46,7 +46,7 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
     <CardMedia
       component="img"
       height="220"
-          image={`${API_URL}/event-content/${fileName}`}
+          image={`${API_URL}event-content/${fileName}`}
       alt="green iguana"
     />
     <CardContent>
@@ -62,11 +62,7 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
 
     </CardContent>
   </CardActionArea>
-  <CardActions>
-    <Button size="small" color="primary">
-      Share
-    </Button>
-  </CardActions>
+
 </Card>
 
 

@@ -60,7 +60,7 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
     <CardMedia
       component="img"
       height="450"
-      image={`${API_URL}/event-content/${fileName}`}
+      image={`${API_URL}event-content/${fileName}`}
       alt="green iguana"
     />
 
