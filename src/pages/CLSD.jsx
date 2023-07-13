@@ -17,7 +17,7 @@ import Footer from "../navigation/Footer";
 
 import CLSD from "./../components/CLSD/about-CLSD";
 import MainSlider from  "../components/Slider/Slider";
-
+import CLSD_view from  "../views/CLSD";
 import "./newheader.style.css";
 const Contactpage = () => {
 
@@ -28,6 +28,11 @@ const Contactpage = () => {
               <Navbar />
              
               <CLSD />
+              <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+             
+                 </Box>
+
+              <CLSD_view />
               <MainSlider />
 
               <Footer />
