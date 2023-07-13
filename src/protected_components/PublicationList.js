@@ -14,6 +14,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
+
 const EventList = () => {
   const navigate = useNavigate();
   const [tutorials, setTutorials] = useState([]);
@@ -54,9 +55,10 @@ const EventList = () => {
       id: tutorial.id,
       title: tutorial.title,
       degre: tutorial.degree,
+      year: tutorial.year,
+      student: tutorial.student,
 
 
-      identification: tutorial.identification,
       archived: tutorial.archived ? "1" : "0",
       published: tutorial.published ? "1" : "0",
 
@@ -521,11 +523,13 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
                 </div>
               
                 <div className= 'mt-4'>
-                
                 <label>Year:</label> {currentTutorial.year}
                 </div>
 
-              
+
+                <div className= 'mt-4'>
+                <label>Year:</label> {currentTutorial.student}
+                </div>
 
               </div>
             ) : (

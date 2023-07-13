@@ -15,6 +15,7 @@ const Equipment = () => {
     degree: "",
     adviser: "",
     year: "",
+    student: "",
 
     types: "",
     archived: false,
@@ -28,7 +29,7 @@ const Equipment = () => {
   const getTutorial = (id) => {
     UserService.get(id)
       .then((response) => {
-        const { id, title, degree, adviser, year,  types, archived, published } =
+        const { id, title, degree, adviser, year, student,  types, archived, published } =
           response.data;
         setCurrentTutorial({
           id,
@@ -36,6 +37,8 @@ const Equipment = () => {
           degree,
           adviser,
           year,
+          student,
+
 
           types,
           archived,
@@ -159,7 +162,7 @@ const handleCheckboxChange = (event) => {
 
   const updateTutorial = () => {
     if (confirmUpdate()) {
-      const { id, title, degree, adviser, year, types,archived, published } =
+      const { id, title, degree, adviser, year, student, types,archived, published } =
         currentTutorial;
       const data = new FormData();
       data.append("id", id);
@@ -167,7 +170,7 @@ const handleCheckboxChange = (event) => {
       data.append("degree", degree);
       data.append("adviser", adviser);
       data.append("year", year);
-
+      data.append("student", student);
 
       data.append("types", types); // Convert tags to JSON string
       data.append("archived", archived);
@@ -291,6 +294,22 @@ const handleCheckboxChange = (event) => {
                   id="year"
                   name="year"
                   value={currentTutorial.year}
+                  onChange={handleInputChange}
+                  style={{
+                    resize: "vertical",
+                    minHeight: "50px",
+                    overflow: "auto",
+                  }}
+                />
+              </div>
+
+              <div className="form-group mb-4">
+                <label htmlFor="year">Student/s</label>
+                <textarea
+                  className="form-control"
+                  id="student"
+                  name="student"
+                  value={currentTutorial.student}
                   onChange={handleInputChange}
                   style={{
                     resize: "vertical",

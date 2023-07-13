@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import UserService from "../services/event.service";
 import { Container } from "react-bootstrap";
+import { API_URL } from "../config/index";
 
 
 
@@ -245,14 +246,14 @@ const handleCheckboxChange = (event) => {
                 <div className="form-group mb-4">
                   {currentTutorial.imagePreviewUrl && (
                     <img
-                      src={currentTutorial.imagePreviewUrl}
+                      src={currentTutorial.imagePreviewUrl}s
                       alt="Selected"
                       style={{ maxWidth: "200px", marginBottom: "10px" }}
                     />
                   )}
                   {!currentTutorial.imagePreviewUrl && (
                     <img
-                      src={`http://localhost:5001/api/event-content/${currentTutorial.fileName}`}
+                      src={`${API_URL}event-content/${currentTutorial.fileName}`}
                       alt="Event Image"
                       style={{ height: "250px" }}
                     />

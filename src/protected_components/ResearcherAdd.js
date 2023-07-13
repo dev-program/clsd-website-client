@@ -13,6 +13,7 @@ const AddTutorial = () => {
   const [suffix, setSuffix] = useState("");
   const [email, setEmail ]= useState("");
 
+  const [description, setDescription ]= useState("");
 
   const [archived, setArchived] = useState(false);
   const [published, setPublished] = useState(false);
@@ -61,6 +62,10 @@ const AddTutorial = () => {
   };
 
 
+  const onChangeDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
   const onChangeArchived= (e) => {
     setArchived(e.target.checked);
   };
@@ -74,6 +79,13 @@ const AddTutorial = () => {
     setFile(selectedFile);
     setImagePreview(URL.createObjectURL(selectedFile)); // Set image preview URL
   };
+
+  const desOptions = [
+    { id: 1, name: "Project Leader" },
+    { id: 2, name: "Faculty Researcher" },
+    { id: 3, name: "Research Assistant" },
+    // Add more tags as needed
+  ];
 
   const [researchinterest, setTags] = useState([
     { id: 1, name: 'Molecular Biology & Biotechnology' },
@@ -111,6 +123,8 @@ const onChangeTag = (tagId) => {
     formData.append("suffix", suffix);
     formData.append("email", email);
 
+    formData.append("description", description);
+
     formData.append("archived", archived);
     formData.append("published", published);
     formData.append("file", file);
@@ -147,6 +161,27 @@ const onChangeTag = (tagId) => {
                </Link>
       <h3>Add Tutorial</h3>
       <form onSubmit={handleSubmit}>
+
+      <div className="form-group mb-4">
+                <label htmlFor="description">Types</label>
+                <select
+                className="form-control"
+                  id="description"
+                    name="description"
+                   value={description}
+                        onChange={onChangeDescription}
+                      >
+
+                  <option value="">Select a Types</option>
+                  {desOptions.map(des => (
+                    <option key={des.id} value={des.name}>
+                      {des.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+
 
       <div>
   {researchinterest.map(tag => (

@@ -13,7 +13,9 @@
   import CardMedia from '@mui/material/CardMedia';
   import Typography from '@mui/material/Typography';
   import { Button, CardActionArea, CardActions } from '@mui/material';
+  import { API_URL } from "../config/index";
 
+  
   const EventList = () => {
     const navigate = useNavigate();
     const [tutorials, setTutorials] = useState([]);
@@ -487,33 +489,38 @@
               <CardMedia
                   component="img"
                   height="450"
-                    image={`http://localhost:5001/api/event-content/${currentTutorial.fileName}`}
+                    image={`${API_URL}event-content/${currentTutorial.fileName}`}
                     alt="green iguana"
                   />
             </Card>
 
-            <div className= 'mt-4'>
-                    {currentTutorial.tags}
-                  </div>
 
-          
+                  
+                  
+                  <Typography gutterBottom variant="h4" component="div" sx={{ color: '#353839 ', fontWeight: 'bold' }} className=" mt-4" style={{ fontFamily: " klavika", fontSize: "18px" }} >
+                  {currentTutorial.tags}
+                    </Typography>
 
-                  <div className= 'mt-4'>
-                    {currentTutorial.updatedAt}  {new Date(currentTutorial.createdAt).toLocaleDateString("en-US",options)}
-                  </div>
 
-            
-
-                  <div className= 'mt-4'>
-                    {currentTutorial.title}
-                  </div>
-
-            
-
-                  <div style={{ textAlign: 'justify', textIndent: '2em'  }} className= 'mt-4' >
-                    {currentTutorial.description}
-                  </div>
+                  <Typography gutterBottom variant="h10" component="div" className=" mt-4" style={{ fontFamily: " klavika", fontSize: "18px" }}  >
+            <CalendarMonthIcon /> {new Date(currentTutorial.createdAt).toLocaleDateString("en-US",options)} ||    <CalendarMonthIcon /> {new Date(currentTutorial.updatedAt).toLocaleDateString("en-US",options)}
+          </Typography>
+               
                 
+                  <Typography gutterBottom variant="h4" component="div" sx={{ color: '#353839 ', fontWeight: 'bold' }} className=" mt-4" style={{ fontFamily: " klavika", fontSize: "36px" }} >
+                     {currentTutorial.title}
+                    </Typography>
+         
+         
+      
+         
+          <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }} >
+            {currentTutorial.description.split("\n").map((paragraph, index) => (
+              <p align="justify"  key={index}>
+                 {paragraph}
+                </p>
+               ))}
+            </Typography>
 
                 </div>
               ) : (

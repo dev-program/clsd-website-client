@@ -149,6 +149,7 @@ const filteredList = (events, search) => {
                                 {currentEvent.title}
                                 </p> 
                                   </Box>
+                                  
                                 <Row className='mt-4' >
                                   <Col >
                                

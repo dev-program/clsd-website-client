@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { API_URL } from "../../config/index";
+import Typography from '@mui/material/Typography';
 
-import { Link } from "react-router-dom";
+
 import {
     Container,Card,Col,Row
 } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
+
 
 import TutorialService from "../../services/researcher.service";
 import ResearcherPost from "./ResearchHeadPost";
@@ -112,38 +115,47 @@ const EventsList = () => {
         {currentEvent ? (
 
                 <Card className='mt-4'>
-                      <Card.Img  class="rounded-circle" variant="top" src={`http://localhost:5001/api/researcher-content/${currentEvent.fileName}`} height="300" width="250"/>
-                      <Card.Title><h2>  {currentEvent.classification}</h2> </Card.Title>
+                      <Card.Img  
+                            class="rounded-circle" 
+                            variant="top" 
+                            src={`${API_URL}researcher-content/${currentEvent.fileName}`} 
+                            height="300" 
+                            width="250"
+                       />
+                      <Card.Title>
+                      
+                      </Card.Title>
                       <Card.Body >
-                              <h3>{currentEvent.firstName} {currentEvent.middleName}.  {currentEvent.lastName}, {currentEvent.suffix} </h3>
-                                  {currentEvent.designation}    {currentEvent.department}   <br></br>
-                                <Row className='mt-4' >
-                        {  /*}    <Col >
-                                   <h5>Education Background </h5>
-                                    {currentEvent.education_I}  <br></br>
-                                    {currentEvent.education_II} <br></br>
-                                    {currentEvent.education_III} <br></br>
-                                    {currentEvent.licensure}  <br></br>
-                                    {currentEvent.others}
-                                     <br></br><br></br>
+                        
+                                 <Typography  sx={{ color: '#353839 ' }}  style={{ fontFamily: "klavika", fontSize: "36px" }} >
+                                  <p style={{ fontFamily: "klavika", fontSize: "22px" }}  >  
+                                  {currentEvent.firstName} {currentEvent.middleName}.  {currentEvent.lastName}, {currentEvent.suffix} 
+                                 </p>  
+                                 </Typography>
 
-                            
-                                      {currentEvent.email}  
-                                  </Col>
-                                  <Col >
-                                    <h5>Research Interest </h5>
-                                    {currentEvent.researchInterest}    <br></br>
-                                  </Col>
-                                  */  }
-                                
-                                
-                                <Col >
-                                <h5>Research Interest </h5>
-                                    {currentEvent.researchinterest}    <br></br>
-                                </Col>
-                                <Col>
-                                
-                                {currentEvent.email}  
+
+                         <Row className='mt-4' >                                                   
+                         <Col >
+                                <Typography  sx={{ color: '#353839 ' }}  style={{ fontFamily: "klavika", fontSize: "18px" }} >
+                                  <p style={{ fontFamily: "klavika", fontSize: "22px" }}  >Research Interest
+                                 </p>  
+                                  {currentEvent.researchinterest.split(",").map((researchinterest, index) => (
+                                 <li key={index}>{researchinterest.trim()}</li>
+           
+                                       ))}
+                                 </Typography>
+
+
+          
+                                 <Typography className="mt-4" sx={{ color: '#353839 ' }}  style={{ fontFamily: "klavika", fontSize: "18px"  }} >
+                                  <p style={{ fontFamily: "klavika", fontSize: "22px" }}  >  
+                                  Email                                
+                                 </p>  
+                                 {currentEvent.email}   
+                                 </Typography>
+
+
+                              
                                 </Col>
 
                                 </Row>

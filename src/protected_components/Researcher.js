@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import UserService from "../services/researcher.service";
 import { Container } from "react-bootstrap";
-
+import { API_URL } from "../config/index";
+import Typography from '@mui/material/Typography';
 
 
 const Equipment = () => {
@@ -131,7 +132,7 @@ const handleInputChange = (event) => {
         setCurrentTutorial({ ...currentTutorial, published: status });
         console.log(response.data);
              
-        navigate("/event_list");
+        navigate("/researcher_list");
       })
       .catch(e => {
         console.log(e);
@@ -238,15 +239,16 @@ const handleInputChange = (event) => {
             </div>
 
             <form>
+              
             <div className="form-group mb-4">
                 <label htmlFor="description">Description</label>
                 <select
-  className="form-control"
-  id="description"
-  name="description"
-  value={currentTutorial.description}
-  onChange={handleInputChange}
->
+                className="form-control"
+                  id="description"
+                    name="description"
+                   value={currentTutorial.description}
+                        onChange={handleInputChange}
+                      >
 
                   <option value="">Select a description</option>
                   {desOptions.map(des => (
@@ -357,7 +359,7 @@ const handleInputChange = (event) => {
                   )}
                   {!currentTutorial.imagePreviewUrl && (
                     <img
-                      src={`http://localhost:5001/api/researcher-content/${currentTutorial.fileName}`}
+                      src={`${API_URL}researcher-content/${currentTutorial.fileName}`}
                       alt="Researcher Image"
                       style={{ height: "250px" }}
                     />

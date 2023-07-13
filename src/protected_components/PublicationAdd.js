@@ -8,9 +8,11 @@ const AddTutorial = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [degree, setDegree] = useState("");
-
   const [adviser, setAdviser] = useState("");
   const [year, setYear] = useState("");
+  const [student, setStudent] = useState("");
+
+  const [types, setTypes ]= useState("");
 
   const [published, setPublished] = useState(false);
 
@@ -30,6 +32,18 @@ const AddTutorial = () => {
     setYear(e.target.value);
   };
 
+  const onChangeStudent = (e) => {
+    setStudent(e.target.value);
+  };
+
+
+  const onChangeTypes = (e) => {
+    setTypes(e.target.value);
+  };
+
+ 
+
+
 
   const onChangePublished = (e) => {
     setPublished(e.target.checked);
@@ -44,6 +58,12 @@ const AddTutorial = () => {
     formData.append("degree", degree);
     formData.append("adviser", adviser);
     formData.append("year", year);
+    formData.append("student", student);
+
+    formData.append("types", types);
+
+
+
     formData.append("published", published);
 
    
@@ -60,6 +80,14 @@ const AddTutorial = () => {
   };
 
 
+  const desOptions = [
+    { id: 1, name: "CLSD Publication" },
+    { id: 2, name: "CLSD Under Project Thesis" },
+    { id: 3, name: "R&D Publicatio" },
+    { id: 3, name: "R&D Under Project Thesis" },
+    // Add more tags as needed
+  ];
+
 
 
 
@@ -71,15 +99,35 @@ const AddTutorial = () => {
                </Link>
       <h3>Add CLSD Publication</h3>
       <form onSubmit={handleSubmit}>
-        <div className="form-group mt-4">
+
+      <div className="form-group mb-4">
+                <label htmlFor="types">Types</label>
+                <select
+                className="form-control"
+                  id="types"
+                    name="types"
+                   value={types}
+                        onChange={onChangeTypes}
+                      >
+
+                  <option value="">Select a Types</option>
+                  {desOptions.map(des => (
+                    <option key={des.id} value={des.name}>
+                      {des.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+
+           <div className="form-group mt-4">
           <label>Title</label>
-          <input
-            type="text"
+          <textarea
             className="form-control"
             value={title}
             onChange={onChangeTitle}
             required
-          />
+          ></textarea>
         </div>
 
         <div className="form-group mt-4">
@@ -114,6 +162,15 @@ const AddTutorial = () => {
         </div>
 
 
+        <div className="form-group mt-4">
+          <label>Student/s</label>
+          <textarea
+            className="form-control"
+            value={student}
+            onChange={onChangeStudent}
+            required
+          ></textarea>
+        </div>
 
       
     

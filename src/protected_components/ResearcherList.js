@@ -13,6 +13,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { API_URL } from "../config/index";
+import Box from '@mui/material/Box';
 
 const ResearcherList = () => {
   const navigate = useNavigate();
@@ -256,6 +258,14 @@ const handleDelete = () => {
     return window.confirm("Are you sure you want to delete this item?");
   }
 const options = { month: 'long', day: 'numeric' , year: 'numeric'};
+
+
+
+
+
+
+
+
   return (
 
     <>
@@ -432,7 +442,7 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
             />
           )}
           <span>{new Date(tutorial.updatedAt).getFullYear()}</span>
-          <span style={{ marginLeft: '20px' }}>{tutorial.title}</span>
+          <span style={{ marginLeft: '20px' }}>{tutorial.firstName}{tutorial.middleName}.{tutorial.lastName}</span>
         </div>
         <div>
           <span style={{ color: tutorial.published ? 'green' : 'red' }}>
@@ -493,37 +503,56 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
                 
             
 
-          <Card sx={{ maxWidth: 960 }} className= 'mt-4'>
+          <Card sx={{ maxWidth: 300 }} className= 'mt-4'>
             <CardMedia
                 component="img"
-                height="450"
-                  image={`http://localhost:5001/api/researcher-content/${currentTutorial.fileName}`}
+                height="350"
+                  image={`${API_URL}researcher-content/${currentTutorial.fileName}`}
                   alt="green iguana"
                 />
           </Card>
 
-          <div className= 'mt-4'>
-                  {currentTutorial.researchinterest}
-                </div>
+      
 
         
 
                 <div className= 'mt-4'>
-                  {currentTutorial.updatedAt}  {new Date(currentTutorial.createdAt).toLocaleDateString("en-US",options)}
+                {new Date(currentTutorial.createdAt).toLocaleDateString("en-US",options)} {new Date(currentTutorial.updatedAt).toLocaleDateString("en-US",options)}
                 </div>
-
+          
+                              <Typography className="mt-4" sx={{ color: '#353839 ' }}  style={{ fontFamily: "klavika", fontSize: "18px"  }} >
+                                  <p style={{ fontFamily: "klavika", fontSize: "22px" }}  >  
+                                  {currentTutorial.firstName} {currentTutorial.middleName} {currentTutorial.lastName}, {currentTutorial.suffix}                         
+                                 </p>  
+                                
+                                 </Typography>
           
 
-                <div className= 'mt-4'>
-                  {currentTutorial.title}
-                </div>
+                                <Typography className="mt-4" sx={{ color: '#353839 ' }}  style={{ fontFamily: "klavika", fontSize: "18px"  }} >
+                                  <p style={{ fontFamily: "klavika", fontSize: "22px" }}  >  
+                                 {currentTutorial.description}                              
+                                 </p>  
+                                
+                                 </Typography>
 
-          
+                
 
-                <div style={{ textAlign: 'justify', textIndent: '2em'  }} className= 'mt-4' >
-                  {currentTutorial.description}
-                </div>
-              
+           <Typography  sx={{ color: '#353839 ' }}  style={{ fontFamily: "klavika", fontSize: "18px" }} >
+            <p style={{ fontFamily: "klavika", fontSize: "22px" }}  >Research Interest
+              </p>  
+            {currentTutorial.researchinterest.split(",").map((researchinterest, index) => (
+               <li key={index}>{researchinterest.trim()}</li>
+           
+                     ))}
+              </Typography>
+
+
+                                 <Typography className="mt-4" sx={{ color: '#353839 ' }}  style={{ fontFamily: "klavika", fontSize: "18px"  }} >
+                                  <p style={{ fontFamily: "klavika", fontSize: "22px" }}  >  
+                                  Email                                
+                                 </p>  
+                                 {currentTutorial.email}   
+                                 </Typography>
 
               </div>
             ) : (
