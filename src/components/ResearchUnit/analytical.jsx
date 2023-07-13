@@ -1,48 +1,66 @@
 
 import React from "react";
-
-import { Link } from "react-router-dom";
+import { API_URL } from "../../config/index";
 import "./posts.css";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+
 
 export default function Analytical() {
+
+
+  const paragraph = `  Provides and conducts microbiological analyses as requested and specified by different clients who come from all walks of life (domestic, academic, research or industrial sectors within the university).The preparation room is used to store weak and strong/hazardous chemicals to avoid accidents in the laboratory.`;
+ 
+  const bullet =`Sample classification. Assaying. Analysis for chemical, material,   biological, geological  and environmental samples`;
+  const bulletPoints = bullet.split('.').map((point, index) => (
+    <li key={index}>{point.trim()}</li>
+  ));
+
+
   return (
-    <div className="singlePost">
-      <div className="singlePostWrapper">
-      <h1 className="singlePostTitle">
-        Analytical Services Laboratory
-        <div className="singlePostEdit">
-          <i className="singlePostIcon far fa-edit"></i>
-          <i className="singlePostIcon far fa-trash-alt"></i>
-        </div>
-      </h1>
+    <>
+      
+ 
+
+      <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+      Analytical Services Laboratory
+                 </Box>
+
+
         <img
           className="singlePostImg"
-          src="http://localhost:5001/api/collection-content/analytical.jpg"
+         
+          src={`${API_URL}collection-content/analytical.jpg`}
           alt=""
         />
 
-        <div className="singlePostInfo">
+      
+       
 
-        </div>
-        <p className="singlePostParagraph"  align="justify">
-        Provides and conducts microbiological analyses as requested and specified by different clients who come from
-        all walks of life (domestic, academic, research or industrial sectors within the university).
-        </p>
-           </div>
-
-           <h3 className="mt-4">
-  Services
-    </h3>
-  <p className="singlePostParagraph"  align="justify">
-<br></br>
-⦁	Sample classification
-<br></br>
-⦁	Assaying <br></br>
-⦁	Analysis for chemical, material,   biological, geological  and environmental samples. <br></br><br></br>
-The preparation room is used to store weak and strong/hazardous chemicals to avoid accidents in the laboratory.
-         </p>
+           <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }} >
+            {paragraph.split("\n").map((paragraph, index) => (
+              <p align="justify"  key={index}>
+               {paragraph}
+               </p>
+                     ))}
+              </Typography>
 
 
-    </div>
+                 <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "36px" }}   >
+                   Services
+                 </Box>
+
+
+
+
+         <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }}>
+                           <ul>{bulletPoints}</ul>
+        </Typography>
+
+
+     
+
+    </>
   );
 }

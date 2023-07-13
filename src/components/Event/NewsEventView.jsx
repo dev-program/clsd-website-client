@@ -87,15 +87,21 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
       </Card>
 
 
-      <Typography gutterBottom variant="h6" component="div" sx={{ color: '#4169e1', fontWeight: 'bold' }}>
+      <Typography gutterBottom variant="h4" component="div" sx={{ color: '#353839 ', fontWeight: 'bold' }} className=" mt-4" style={{ fontFamily: " klavika", fontSize: "36px" }} >
             {currentTutorial.title}
           </Typography>
-          <Typography gutterBottom variant="h10" component="div" sx={{ typography: 'body2' }}>
+          <Typography gutterBottom variant="h10" component="div" className=" mt-4" style={{ fontFamily: " klavika", fontSize: "18px" }}  >
             <CalendarMonthIcon /> {new Date(currentTutorial.createdAt).toLocaleDateString("en-US",options)}
           </Typography>
-      <Typography variant="subtitle1" color="text.secondary">
-           <p align='justify'>{currentTutorial.description} </p>
-          </Typography>
+          <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }} >
+  {currentTutorial.description.split("\n").map((paragraph, index) => (
+    <p align="justify"  key={index}>
+      {paragraph}
+    </p>
+  ))}
+</Typography>
+
+
 
     </div>
 

@@ -1,7 +1,11 @@
 
 
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
+
+import { API_URL } from "../../config/index";
+import "./posts.css";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 import {
     Card
@@ -10,7 +14,7 @@ import {
 import { Button } from "@mui/material";
 //import Card from "@mui/material/Card";
 import {paragraph} from "./styles.css";
-import Typography from '@mui/material/Typography';
+
 
 
 /*
@@ -141,7 +145,7 @@ export default function EventPost({id, title, fileName }) {
           <Card className="mt-4 mb-4" bg="light" align='center' >
             <Style>
               <Card.Body>
-              <Card.Img    class="square" variant="top"   width="150" height="150"   src={`http://localhost:5001/api/equipment-content/${fileName}`}  />
+              <Card.Img    class="square" variant="top"   width="150" height="150"   src={`${API_URL}equipment-content/${fileName}`}  />
               <br></br>
                 <br></br>
               <Typography  variant="body2" component="div" sx={{  fontWeight: 'bold' }}>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-
-import { Link } from "react-router-dom";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import {
-    Container,Card,Col,Row,
+    Card,Col,Row,
       Form,
       FormControl,
 } from "react-bootstrap";
@@ -136,23 +136,39 @@ const filteredList = (events, search) => {
 
         {currentEvent ? (
 
-                <Card className='mt-4'>
-
-
+                <Card >
                       <Card.Body >
-                        {  /*}
-                      <Card.Img  class="rectangle" variant="top" src={`http://localhost:8080/clsd_project/${currentEvent.image_url}`} height="300" width="600"/>
-                         */}
-
+                    
                                     
-                                <h3 style={{ color: 'blue' }}>  {currentEvent.title}</h3>
-                                <Row className='mt-4' >
+                          
+
+
+                      <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "20px", align:"center" }}   >
+                             
+                             <p align="center">
+                             {currentEvent.title}
+                             </p> 
+                               </Box>
+
+
+
+                                <Row >
                                   <Col >
                               
                                
 
-                                            <h6> Project Leader: {currentEvent.project_leader}</h6>
-                                            <h6> Implementing Agency: {currentEvent.implementing_agency}</h6>
+                                 
+               <Typography sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px", fontWeight:"bold" }} >
+              <p align="left">
+              Project Leader: {currentEvent.project_leader}  
+               </p> 
+              </Typography>
+
+              <Typography sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" , fontWeight:"bold" }} >
+              <p align="left">
+              Implementing Agency: {currentEvent.implementing_agency}
+               </p> 
+              </Typography>
                                   </Col>
 
                                 </Row>

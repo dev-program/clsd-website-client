@@ -18,6 +18,8 @@ import Footer from "../navigation/Footer";
 import MainSlider from  "../components/Slider/Slider";
 import Avp from  "../video/mainvid";
 import NewsEvent from  "../views/NewsEvent";
+import CLSD from  "../views/CLSD";
+
 
 //import "./newheader.style.css";
 const Homepage = () => {
@@ -37,11 +39,12 @@ const Homepage = () => {
         <Header />
         <Navbar />
        
-          <Avp />
+           <Avp />
             
-
-         
            <NewsEvent/>   
+
+
+           <CLSD/>   
        
          <Footer />
      </Container>

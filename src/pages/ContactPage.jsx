@@ -5,7 +5,7 @@ import {
 } from "react-bootstrap";
 
 
-import { Button } from "@mui/material";
+
 import Box from '@mui/material/Box';
 
 
@@ -26,6 +26,12 @@ const Contactpage = () => {
           <Container  bg="light"  className="mt-4 mb-4">
             <Header />
               <Navbar />
+
+
+           <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+           Contact us
+          </Box>
+
 
               <ContactUs />
 

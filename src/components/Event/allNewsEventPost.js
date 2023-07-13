@@ -50,7 +50,7 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
       alt="green iguana"
     />
     <CardContent>
-    <Typography gutterBottom variant="h8" component="div" sx={{ color: '#4169e1', fontWeight: 'bold' }}>
+    <Typography gutterBottom variant="h8" component="div" sx={{ color: '#808080', fontWeight: 'bold' }}>
         {tags}
       </Typography>
       <Typography gutterBottom variant="h8" component="div" sx={{ color: '#4169e1', fontWeight: 'bold' }}>

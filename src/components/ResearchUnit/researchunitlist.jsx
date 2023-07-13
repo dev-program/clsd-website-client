@@ -1,5 +1,10 @@
 
 import React from "react";
+import { API_URL } from "../../config/index";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+
 
 import { Link,useNavigate } from "react-router-dom";
 
@@ -145,9 +150,9 @@ export default function ResearchUnitList() {
         <Col className="mt-4 mb-4">
     <Card  onClick={molbio}>
       <Style>
-    <Card.Img height='150' with='150' src="http://localhost:5001/api/collection-content/micro-biology.jpg" />
+    <Card.Img height='150' with='150'    src={`${API_URL}collection-content/micro-biology.jpg`}   />
     <Card.Body>
-    <Card.Title>Molecular Laboratory</Card.Title>
+    <Card.Title  style={{ fontFamily: "klavika", fontSize: "18px", fontWeight:"bold" ,color:'#353839 '}} >Molecular Laboratory</Card.Title>
 
 
     </Card.Body>
@@ -157,9 +162,9 @@ export default function ResearchUnitList() {
 <Col className="mt-4 mb-4">
     <Card onClick={Analytical}>
         <Style>
-    <Card.Img  height='150' with='150' src="http://localhost:5001/api/collection-content/analytical.jpg" />
+    <Card.Img  height='150' with='150'  src={`${API_URL}collection-content/analytical.jpg`}   />
     <Card.Body>
-    <Card.Title>Analytical Laboratory</Card.Title>
+    <Card.Title style={{ fontFamily: "klavika", fontSize: "18px", fontWeight:"bold" ,color:'#353839 '}} >Analytical Laboratory</Card.Title>
 
 
     </Card.Body>
@@ -169,9 +174,9 @@ export default function ResearchUnitList() {
 <Col className="mt-4 mb-4">
     <Card  onClick={foodinnovation} >
         <Style>
-    <Card.Img  height='150' with='150' src="http://localhost:5001/api/collection-content/post%20harvest.jpg" />
-    <Card.Body>
-    <Card.Title>Food Innovation Laboratory</Card.Title>
+    <Card.Img  height='150' with='150' src={`${API_URL}collection-content/post%20harvest.jpg`}   />
+    <Card.Body> 
+    <Card.Title style={{ fontFamily: "klavika", fontSize: "18px", fontWeight:"bold" ,color:'#353839 '}} >Food Innovation Laboratory</Card.Title>
 
 
     </Card.Body>
@@ -182,9 +187,9 @@ export default function ResearchUnitList() {
 <Col className="mt-4 mb-4">
     <Card  onClick={aquaculture}  >
         <Style>
-    <Card.Img  height='150' with='150' src="http://localhost:5001/api/collection-content/aquaculture%20station.jpg" />
+    <Card.Img  height='150' with='150' src={`${API_URL}collection-content/aquaculture%20station.jpg`}  />
     <Card.Body>
-    <Card.Title>Aquaculture Station</Card.Title>
+    <Card.Title style={{ fontFamily: "klavika", fontSize: "18px", fontWeight:"bold" ,color:'#353839 '}} >Aquaculture Station</Card.Title>
 
 
     </Card.Body>
@@ -195,9 +200,9 @@ export default function ResearchUnitList() {
 <Col className="mt-4 mb-4">
     <Card  onClick={generalfacilities}>
         <Style>
-    <Card.Img  height='150' with='150'  src="http://localhost:5001/api/collection-content/general%20facilities.jpg" />
+    <Card.Img  height='150' with='150'   src={`${API_URL}collection-content/general%20facilities.jpg`}  />
     <Card.Body>
-    <Card.Title>General Facility Station</Card.Title>
+    <Card.Title style={{ fontFamily: "klavika", fontSize: "18px", fontWeight:"bold" ,color:'#353839 '}} >General Facility Station</Card.Title>
 
 
     </Card.Body>

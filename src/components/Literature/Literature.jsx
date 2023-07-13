@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import {
     Container,Card,Col,Row,
       Form,
@@ -141,13 +142,31 @@ const filteredList = (events, search) => {
 
                       <Card.Body >
                              
-                                <h4>  {currentEvent.title}</h4>
+                                
+                                <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "24px", align:"center" }}   >
+                             
+                                <p align="center">
+                                {currentEvent.title}
+                                </p> 
+                                  </Box>
                                 <Row className='mt-4' >
                                   <Col >
-                                  <h5>Article Link</h5>
-                                  <h6> DOI : <a href={currentEvent.doi} target="_blank" rel="noreferrer noopener">{currentEvent.doi}</a>  </h6>
-                                  <h6> Link :  <a href={currentEvent.link} target="_blank" rel="noreferrer noopener">Article Link </a> </h6>
-                       
+                               
+                                 
+                                  <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "24px" }}   >
+                                  Article Link
+                                  </Box>
+
+                                  <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "18px" }}   >
+                                  DOI : <a href={currentEvent.doi} target="_blank" rel="noreferrer noopener">DOI Link</a> 
+                                    </Box>
+                      
+                                  <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "18px" }}   >
+                                   Link :  <a href={currentEvent.link} target="_blank" rel="noreferrer noopener">Article Link </a>
+                                   </Box>
+
+
+
                                   </Col>
 
                                 </Row>

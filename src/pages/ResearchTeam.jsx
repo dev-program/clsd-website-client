@@ -23,22 +23,26 @@ const PostProgramPage = () => {
           <Header />
           <Navbar />
 
-
-                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }} centered className="mt-4" >
-                          <h2>Head Researcher </h2>
-                            </Box>
-                            <ResearchHead />
-                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }} centered className="mt-4" >
-                              <h2>Faculty Researchers</h2>
-                              </Box>
-                              <ResearchFaculty />
-                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }} centered className="mt-4" >
-                              <h2>Assistant Researcher  </h2>
-                              </Box>
-                                  <ResearchAssistant />
+          <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+           CLSD Research Team
+          </Box>
 
 
-
+          <Box   style={{ fontFamily: " klavika", fontSize: "36px" ,  color: '#353839 ', fontWeight: 'bold' }}   >
+          Station Manager
+          </Box>
+          <ResearchHead />         
+          <Box   style={{ borderBottom: 2, borderColor: 'divider' , fontFamily: " klavika", fontSize: "36px" ,  color: '#353839 ', fontWeight: 'bold' }}   >
+          Faculty Researcher
+          </Box>
+          <ResearchFaculty />              
+                        
+          <Box   style={{ borderBottom: 2, borderColor: 'divider' , fontFamily: " klavika", fontSize: "36px" ,  color: '#353839 ', fontWeight: 'bold' }}   >
+          Assistant Researcher
+          </Box>      
+          <ResearchAssistant />              
+                       
+                               
 
 
 

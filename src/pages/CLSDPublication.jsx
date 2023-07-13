@@ -5,7 +5,7 @@ import {
 } from "react-bootstrap";
 
 
-import { Button } from "@mui/material";
+
 import Box from '@mui/material/Box';
 
 
@@ -26,7 +26,10 @@ const PublicationPage = () => {
        <Container   bg="primary"  className="mt-4"   >
          <Header />
            <Navbar />
-           <Box sx={{ borderBottom: 1, borderColor: 'divider' }} centered className="mt-4" >     <h2>CLSD Publication </h2> </Box>
+         
+           <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+           Lakes Sustainable Development Publication
+          </Box>
 
            <CLSDPublication />
 

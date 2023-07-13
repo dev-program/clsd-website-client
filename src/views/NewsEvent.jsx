@@ -23,7 +23,7 @@ const PostProgramPage = () => {
              
         <Container   bg="primary"  className="mt-4"   >
       
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} centered className="mt-4" >
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "16px" }}   >
              <h2> News & Event </h2>
                </Box>
     

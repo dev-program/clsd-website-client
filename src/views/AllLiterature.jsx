@@ -26,23 +26,16 @@ const AllNewsEventView = () => {
        <Container   bg="primary"  className="mt-4"   >
          <Header />
            <Navbar />
-           <Box sx={{ borderBottom: 1, borderColor: 'divider' }} centered className="mt-4" >
-             <h2>All Literature </h2>
-               </Box>
+              
+               <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+               All Literature
+                 </Box>
 
-           <Container className="mt-4 mb-4" >
+              <Container className="mt-4 mb-4" >
 
-
-
-                           <AllLiterature/>
-
-
-
-
-
+                  <AllLiterature/>
+           
              </Container>
-
-
 
 
            <Footer />

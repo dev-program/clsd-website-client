@@ -1,11 +1,8 @@
 import React from 'react';
 import {
-    Container,
-
+    Container
 } from "react-bootstrap";
 
-
-import { Button } from "@mui/material";
 import Box from '@mui/material/Box';
 
 
@@ -26,7 +23,12 @@ const AllLiterature = () => {
        <Container   bg="primary"  className="mt-4"   >
          <Header />
            <Navbar />
-           <Box sx={{ borderBottom: 1, borderColor: 'divider' }} centered className="mt-4" >     <h2> R&D and Non-R&D Project</h2> </Box>
+
+
+           <Box   style={{ borderBottom: 2, borderColor: 'divider' , fontFamily: " klavika", fontSize: "36px" ,  color: '#353839 ', fontWeight: 'bold' }}   >
+           R&D and Non-R&D Project
+          </Box>
+
 
            <RnDProject />
 

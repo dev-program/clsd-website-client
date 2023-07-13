@@ -9,6 +9,7 @@ import {
     Button,
     FloatingLabel
 } from "react-bootstrap";
+import Box from '@mui/material/Box';
 
 
 
@@ -27,13 +28,12 @@ export default function ContactUs() {
 
     <Container>
 
-    <Row  className="mt-4"> <h1  className="mb-3"> Contact Us</h1>
+    <Row  className="mt-4"> 
         <Col lg={8}>
             <Row>
 
 
-    {/* <Form  onSubmit={handleSubmit}>
-*/}
+
 
 {/*
       <Form  >
@@ -94,21 +94,35 @@ export default function ContactUs() {
                         <Row className="mt-4">
                         <Col sm>
                         <h4> Address</h4>
-                        <p>Brgy. Malinta, Los Baños, Laguna</p>
+                       
+
+                        <Box sx={{   color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "18px" }}   >
+                        Brgy. Malinta, Los Baños, Laguna
+                         </Box>
+
+
                         </Col>
 
                         <Col sm>
                         <h4> Contacts</h4>
-                        <p>Tel. no.: </p>
-                        <p>Email Adress: nicer.program@lspu.edu.ph </p>
+                      
+                       
 
-
+                        <Box sx={{   color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "18px" }}   >
+                        Email Adress: nicer.program@lspu.edu.ph
+                         </Box>
                         </Col>
 
                         <Col sm>
                         <h4> Hours</h4>
-                        <p>8:00 - 5:00 pm </p>
-                      {/*}  <p>Sat-Sun: Closed </p> */}
+                      
+
+                        <Box sx={{   color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "18px" }}   >
+                        8:00 - 5:00 pm
+                         </Box>
+
+
+                
                         </Col>
                         </Row>
                         </Col>

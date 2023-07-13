@@ -1,36 +1,51 @@
 
 import React from "react";
-
-import { Link } from "react-router-dom";
+import { API_URL } from "../../config/index";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box'
 import "./posts.css";
 
 export default function Ecoinformatics() {
+
+
+  const paragraph = `
+  
+  
+  Develop and improve farming technologies for aquatic species, pilot trials and demonstration projects,  facilities for industry and researchers to carry out projects and trials, work with others towards sustainable aquaculture and fisheries, train staff and students and educate the public about aquaculture.
+       
+   
+   `;
+
+
   return (
-    <div className="singlePost">
-      <div className="singlePostWrapper">
-      <h1 className="singlePostTitle">
-      Ecoinformatics Laboratory
-        <div className="singlePostEdit">
-          <i className="singlePostIcon far fa-edit"></i>
-          <i className="singlePostIcon far fa-trash-alt"></i>
-        </div>
-      </h1>
-        <img
-          className="singlePostImg"
-          src="http://localhost:5001/api/collection-content/tadlac%20lake.jpg"
-          alt=""
-        />
+    <>
+     
 
-        <div className="singlePostInfo">
 
-        </div>
-        <p className="singlePostParagraph"  align="justify">
-        Develop and improve farming technologies for aquatic species, pilot trials and demonstration projects,
-         facilities for industry and researchers to carry out projects and trials, work with others towards
-          sustainable aquaculture and fisheries, train staff and students and educate the public about aquaculture.
-        </p>
+    
 
-    </div>
-    </div>
+
+    <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px"  }}   >
+    Ecoinformatics Laboratory
+                 </Box>
+
+      <img
+  className="singlePostImg"
+  src={`${API_URL}collection-content/tadlac%20lake.jpg`}
+  alt=""
+/>
+
+<Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }} >
+  {paragraph.split("\n").map((paragraph, index) => (
+    <p align="justify"  key={index}>
+      {paragraph}
+    </p>
+  ))}
+</Typography>
+
+
+
+
+    </>
   );
 }

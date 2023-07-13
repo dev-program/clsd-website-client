@@ -1,63 +1,63 @@
-
 import React from "react";
-
-import { Link } from "react-router-dom";
+import { API_URL } from "../../config/index";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import "./posts.css";
 
 export default function FoodInnovation() {
+
+
+  const paragraph =   `Provides equipment for the processing and development of fisheries products. Aids students in innovating existing products derived from fisheries products.Aims to guide multidisciplinary teams of students and young professionals through the process of innovation – from identifying challenges to developing consumer-centric solutions to laboratory prototyping and business model development.
+   `;
+ 
+  const bullet =`
+  Isolation and purification.
+  Biochemical and phenotypic characterization. 
+  DNA extraction.  
+  Molecular identification.  
+  Disc diffusion assay. 
+  Agar dilution assay. 
+  Broth dilution assay
+     
+     `;
+  const bulletPoints = bullet.split('.').map((point, index) => (
+    <li key={index}>{point.trim()}</li>
+  ));
+
   return (
-    <div className="singlePost">
-      <div className="singlePostWrapper">
-      <h1 className="singlePostTitle">
-        Food Innovation Laboratory
-        <div className="singlePostEdit">
-          <i className="singlePostIcon far fa-edit"></i>
-          <i className="singlePostIcon far fa-trash-alt"></i>
-        </div>
-      </h1>
-        <img
-          className="singlePostImg"
-          src="http://localhost:5001/api/collection-content/post%20harvest.jpg"
-          alt=""
-        />
-
-        <div className="singlePostInfo">
-
-        </div>
-        <p className="singlePostParagraph"  align="justify">
-        Provides equipment for the processing and development of fisheries products.
-         Aids students in innovating existing products derived from fisheries products.
-
-           </p>
-           <p className="singlePostParagraph"  align="justify">
-           Aims to guide multidisciplinary teams of students and young professionals through the
-           process of innovation – from identifying challenges to developing consumer-centric solutions
-            to laboratory prototyping and business model development.
-
-              </p>
+    <>
+    
 
 
-           </div>
+  <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+  Food Innovation Laboratory
+                  </Box>
 
-           <h3 className="mt-4">
-            Services
-            </h3>
-            <p className="singlePostParagraph"  align="justify">
-              <br></br>
-                ⦁	Isolation and purification
-                  <br></br>
-                  ⦁	Biochemical and phenotypic characterization  <br></br>
-                  ⦁	DNA extraction  <br></br>
-                  ⦁	Molecular identification  <br></br>
-                  ⦁	Disc diffusion assay  <br></br>
-                  ⦁	Agar dilution assay  <br></br>
-                  ⦁	Broth dilution assay
+                <img
+                   className="singlePostImg"
+                   src={`${API_URL}collection-content/post%20harvest.jpg`}
+                   alt=""
+                />
 
-    <br />
-    <br />
+          <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }} >
+            {paragraph.split("\n").map((paragraph, index) => (
+              <p align="justify"  key={index}>
+               {paragraph}
+               </p>
+                     ))}
+              </Typography>
 
-  </p>
+                 <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "36px" }}   >
+                   Services
+                 </Box>
 
-    </div>
+               <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }}>
+                 <ul>{bulletPoints}</ul>
+               </Typography>
+
+
+
+
+    </>
   );
 }

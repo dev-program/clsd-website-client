@@ -1,56 +1,61 @@
 
 import React from "react";
+import { API_URL } from "../../config/index";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
-import { Link } from "react-router-dom";
 import "./posts.css";
 
 export default function Molbio() {
+
+  const paragraph = `Aquaculture Research Station- Develop and improve farming technologies for aquatic species, pilot trials and demonstration projects, facilities for industry and researchers to carry out projects and trials, work with others towards sustainable aquaculture and fisheries, train staff and students and educate the public about aquaculture. `;
+ 
+  const bullet =`
+  Isolation and purification. 
+  Biochemical and phenotypic characterization. 
+  DNA extraction. Molecular identification.
+   Disc diffusion assay.  Agar dilution assay.
+     Broth dilution assay 
+     
+     `;
+  const bulletPoints = bullet.split('.').map((point, index) => (
+    <li key={index}>{point.trim()}</li>
+  ));
+
+
   return (
-    <div className="singlePost">
-      <div className="singlePostWrapper">
-      <h1 className="singlePostTitle">
-        Aquaculture Research Station
-        <div className="singlePostEdit">
-          <i className="singlePostIcon far fa-edit"></i>
-          <i className="singlePostIcon far fa-trash-alt"></i>
-        </div>
-      </h1>
-        <img
-          className="singlePostImg"
-          src="http://localhost:5001/api/collection-content/aquaculture%20station.jpg"
-          alt=""
-        />
+    <>
+    
 
-        <div className="singlePostInfo">
 
-        </div>
-        <p className="singlePostParagraph"  align="justify">
-        Aquaculture Research Station- Develop and improve farming technologies for aquatic species,
-        pilot trials and demonstration projects, facilities for industry and researchers to carry out projects and trials,
-        work with others towards sustainable aquaculture and fisheries, train staff and students and educate the public about aquaculture.
+                  <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+                  Aquaculture Research Station
+                  </Box>
 
-           </p>
-           </div>
+                <img
+                   className="singlePostImg"
+                   src={`${API_URL}collection-content/aquaculture%20station.jpg`}
+                   alt=""
+                />
 
-           <h3 className="mt-4">
-  Services
-    </h3>
-    <p className="singlePostParagraph"  align="justify">
-<br></br>
-⦁	Isolation and purification
-<br></br>
-⦁	Biochemical and phenotypic characterization  <br></br>
-⦁	DNA extraction  <br></br>
-⦁	Molecular identification  <br></br>
-⦁	Disc diffusion assay  <br></br>
-⦁	Agar dilution assay  <br></br>
-⦁	Broth dilution assay
+          <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }} >
+            {paragraph.split("\n").map((paragraph, index) => (
+              <p align="justify"  key={index}>
+               {paragraph}
+               </p>
+                     ))}
+              </Typography>
 
-    <br />
-    <br />
+                 <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "36px" }}   >
+                   Services
+                 </Box>
 
-  </p>
+               <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }}>
+                 <ul>{bulletPoints}</ul>
+               </Typography>
 
-    </div>
+
+
+    </>
   );
 }

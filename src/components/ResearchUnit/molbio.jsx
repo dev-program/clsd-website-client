@@ -1,56 +1,66 @@
-
 import React from "react";
+import { API_URL } from "../../config/index";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
-import { Link } from "react-router-dom";
 import "./posts.css";
 
 export default function Molbio() {
+
+  const paragraph =   `
+  
+  The Molecular and Microbiology Laboratory is important for experimental studies of graduates and undergraduates.It provides services such as DNA extraction, isolation and purification of desired isolates and other services related in microbiology studies.The facilities of the microbiology and molecular laboratory can cater all kinds of microbiology analysis like presence of antimicrobial properties,phytochemical, and many more.
+  `;
+
+ const bullet =`
+ Isolation and purification.
+ Biochemical and phenotypic characterization.  
+ DNA extraction.
+ Molecular identification.  
+ Disc diffusion assay.  
+ Agar dilution assay.  
+ Broth dilution assay
+ 
+    
+    `;
+ const bulletPoints = bullet.split('.').map((point, index) => (
+   <li key={index}>{point.trim()}</li>
+ ));
+
+
   return (
-    <div className="singlePost">
-      <div className="singlePostWrapper">
-      <h1 className="singlePostTitle">
+    <>
+     
+
+
+        <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
         Molecular Biology & Microbiology Laboratory
-        <div className="singlePostEdit">
-          <i className="singlePostIcon far fa-edit"></i>
-          <i className="singlePostIcon far fa-trash-alt"></i>
-        </div>
-      </h1>
-        <img
-          className="singlePostImg"
-          src="http://localhost:5001/api/collection-content/micro-biology.jpg"
-          alt=""
-        />
+                  </Box>
 
-        <div className="singlePostInfo">
+                <img
+                   className="singlePostImg"
+                   src={`${API_URL}collection-content/micro-biology.jpg`}
+                   alt=""
+                />
 
-        </div>
-        <p className="singlePostParagraph"  align="justify">
-          The Molecular and Microbiology Laboratory is important for experimental studies of graduates and undergraduates.
-           It provides services such as DNA extraction, isolation and purification of desired isolates and other services related in microbiology studies.
-           The facilities of the microbiology and molecular laboratory can cater all kinds of microbiology analysis like presence of antimicrobial properties,
-           phytochemical, and many more.
-           </p>
-           </div>
+          <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }} >
+            {paragraph.split("\n").map((paragraph, index) => (
+              <p align="justify"  key={index}>
+               {paragraph}
+               </p>
+                     ))}
+              </Typography>
 
-           <h3 className="mt-4" >
-  Services
-    </h3>
-      <p className="singlePostParagraph"  align="justify">
-<br></br>
-⦁	Isolation and purification
-<br></br>
-⦁	Biochemical and phenotypic characterization  <br></br>
-⦁	DNA extraction  <br></br>
-⦁	Molecular identification  <br></br>
-⦁	Disc diffusion assay  <br></br>
-⦁	Agar dilution assay  <br></br>
-⦁	Broth dilution assay
+                 <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "36px" }}   >
+                   Services
+                 </Box>
 
-    <br />
-    <br />
+               <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }}>
+                 <ul>{bulletPoints}</ul>
+               </Typography>
 
-  </p>
 
-    </div>
+
+    </>
   );
 }

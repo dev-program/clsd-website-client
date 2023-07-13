@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import { API_URL } from "../../config/index";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import { Link } from "react-router-dom";
 import {
     Container,Card,Col,Row
@@ -109,15 +112,32 @@ const Equipment = () => {
         {currentEvent ? (
 
                 <Card className='mt-4'>
-                      <Card.Img  class="square" variant="top" src={`http://localhost:5001/api/equipment-content/${currentEvent.fileName}`} height="300" width="250"/>
-                      <Card.Title><h2>  {currentEvent.title}</h2> </Card.Title>
+                      <Card.Img  class="square" variant="top" src={`${API_URL}equipment-content/${currentEvent.fileName}`} height="300" width="250"/>
+                      <Card.Title>
+                      
+                                     <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "26px" }} >
+                                                   {currentEvent.title.split("\n").map((title, index) => (                                                 
+                                                    <p align="justify"  key={index}>                                                   
+                                                     {title}
+                                                    </p>
+                                                    ))}
+                                      </Typography>
+
+                      </Card.Title>
                       <Card.Body >
 
-                                <Row className='mt-4'  >
+                                <Row >
                                   <Col >
-                                  <h5>About Equipment and Usage </h5>
-                                    {currentEvent.description}  <br></br>
-
+                                 
+                                
+                                
+                                         <Typography variant="subtitle1" color="text.secondary" sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }} >
+                                                   {currentEvent.description.split("\n").map((description, index) => (                                                   
+                                                    <p align="justify"  key={index}>                                                 
+                                                     {description}
+                                                    </p>
+                                                    ))}
+                                           </Typography>
                                   </Col>
 
                                 </Row>

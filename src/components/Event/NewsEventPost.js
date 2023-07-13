@@ -68,13 +68,13 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
 
     */}
     <CardContent>
-      <Typography gutterBottom variant="h6" component="div" sx={{ color: '#4169e1', fontWeight: 'bold' }}>
+      <Typography gutterBottom variant="h6" component="div" sx={{ color: '#353839 ', fontWeight: 'bold' }} className=" mt-2" style={{ fontFamily: " klavika", fontSize: "32px" }}>
         {title}
       </Typography>
-      <Typography gutterBottom variant="h10" component="div" sx={{ typography: 'body2' }}>
+      <Typography gutterBottom  component="div" style={{ fontFamily: " klavika", fontSize: "18px" }} >
         <CalendarMonthIcon /> {new Date(createdAt).toLocaleDateString("en-US",options)}
       </Typography>
-      <Typography variant="subtitle1" color="text.secondary">
+      <Typography variant="subtitle1" color="text.secondary" className="mt-4" style={{ fontFamily: "klavika", fontSize: "18px" }}>
        <p align='justify'  className='paragraph'>{description} </p>
       </Typography>
 

@@ -1,25 +1,14 @@
 
 
-import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
+import React from "react";
+import Box from '@mui/material/Box';
 
 import {
     Card
 } from "react-bootstrap";
 
-import { Button } from "@mui/material";
-//import Card from "@mui/material/Card";
-import {paragraph} from "./styles.css";
 import Typography from '@mui/material/Typography';
 
-
-/*
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-*/
 import styled from 'styled-components';
 const cardWidth = 620 ;
 const borderRadius = 10;
@@ -130,40 +119,26 @@ const Style = styled.button`
 export default function EventPost({id, title}) {
   return (
         <>
-          <Card className="mt-4 mb-4" bg="light" align='center' >
+          <Card className="mt-2">
             <Style>
               <Card.Body>
-                {title}
+            
+
+
+                <Typography sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "16px", fontWeight:"bold" }} >
+              <p align="center">
+                     {title}  
+               </p> 
+              </Typography>
+
+
               </Card.Body>
               </Style>
           </Card>
 
-{/*}
 
-  <Card sx={{ maxWidth: 420 }}>
-        <Style>
-  <CardActionArea>
-    <CardMedia
-     class="rounded-circle"
-      component="img"
-      height="140"
-      with="140"
-      image={imageUrl}
-      alt="image"
 
-    />
-    <CardContent>
-      <Typography gutterBottom variant="body1" component="div">
-          {firstName} {middleName} {lastName}, {suffix}
-      </Typography>
-      <Typography variant="body2" color="text.secondary">
-      {designation}
-      </Typography>
-    </CardContent>
-  </CardActionArea>
-        </Style>
-</Card>
-*/}
+
 
 </>
 

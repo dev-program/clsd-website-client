@@ -26,7 +26,9 @@ const Contactpage = () => {
           <Container  bg="light"  className="mt-4 mb-4">
             <Header />
               <Navbar />
-
+              <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "42px" }}   >
+           Lakes Sustainable Development Equipment 
+          </Box>
               <EquipmentList />
 
 

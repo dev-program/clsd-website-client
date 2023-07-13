@@ -1,25 +1,17 @@
 
 
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
-
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import {
     Card
 } from "react-bootstrap";
 
-import { Button } from "@mui/material";
-//import Card from "@mui/material/Card";
-import {paragraph} from "./styles.css";
-import Typography from '@mui/material/Typography';
 
 
-/*
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-*/
+
+
+
 import styled from 'styled-components';
 const cardWidth = 620 ;
 const borderRadius = 10;
@@ -130,10 +122,20 @@ const Style = styled.button`
 export default function EventPost({id, title}) {
   return (
         <>
-          <Card className="mt-4 mb-4" bg="light" align='center' >
+          <Card className="mt-2 "  >
             <Style>
               <Card.Body>
-                {title}
+         
+
+
+                <Box sx={{   color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "20px" }}   >
+                <p align="center">
+                     {title}  
+               </p> 
+                                  </Box>
+
+
+
               </Card.Body>
               </Style>
           </Card>
