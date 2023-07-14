@@ -290,18 +290,18 @@ const handleCheckboxChange = (event) => {
 
               <div className="form-group mb-4">
   <label>
-    <strong>All News:</strong>
+    <strong>Molecular/Micro</strong>
   </label>
   <div>
     <label>
       <input
         type="checkbox"
         name="tags"
-        value="All News"
-        checked={currentTutorial.tags.includes("All News")}
+        value="Molecular/Micro"
+        checked={currentTutorial.tags.includes("Molecular/Micro")}
         onChange={handleCheckboxChange}
       />
-      All News
+      Molecular/Micro
     </label>
   </div>
 
@@ -311,11 +311,11 @@ const handleCheckboxChange = (event) => {
       <input
         type="checkbox"
         name="tags"
-        value="Training & Workshop"
-        checked={currentTutorial.tags.includes("Training & Workshop")}
+        value="Analytical"
+        checked={currentTutorial.tags.includes("Analytical")}
         onChange={handleCheckboxChange}
       />
-      Training & Workshop
+     Analytical
     </label>
   </div>
 
@@ -324,11 +324,11 @@ const handleCheckboxChange = (event) => {
       <input
         type="checkbox"
         name="tags"
-        value="CLSD Participation on R&D"
-        checked={currentTutorial.tags.includes("CLSD Participation on R&D")}
+        value=" Food Innovation"
+        checked={currentTutorial.tags.includes(" Food Innovation")}
         onChange={handleCheckboxChange}
       />
-      CLSD Participation on R&D
+      Food Innovation
     </label>
   </div>
 
@@ -337,11 +337,11 @@ const handleCheckboxChange = (event) => {
       <input
         type="checkbox"
         name="tags"
-        value="Opportunities"
-        checked={currentTutorial.tags.includes("Opportunities")}
+        value="Aquaculture"
+        checked={currentTutorial.tags.includes("Aquaculture")}
         onChange={handleCheckboxChange}
       />
-      Opportunities
+      Aquaculture
     </label>
   </div>
 
@@ -350,11 +350,11 @@ const handleCheckboxChange = (event) => {
       <input
         type="checkbox"
         name="tags"
-        value="Newly Approved R&D Projects"
-        checked={currentTutorial.tags.includes("Newly Approved R&D Projects")}
+        value="  General Facility Equipment"
+        checked={currentTutorial.tags.includes("  General Facility Equipment")}
         onChange={handleCheckboxChange}
       />
-      Newly Approved R&D Projects
+     General Facility Equipment
     </label>
   </div>
 
