@@ -1,18 +1,24 @@
 import React from "react";
 import { Link  } from "react-router-dom";
 import ReactPlayer from 'react-player';
+
+import 'react-html5video/dist/styles.css';
+
+
+{/*}
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import IconButton from "@mui/material/IconButton";
-
 import { DefaultPlayer as Video } from 'react-html5video';
-import 'react-html5video/dist/styles.css';
+*/}
 
   {/*
 https://www.youtube.com/watch?v=vErBTHQQM1Y&pp=ygUoY2VudGVyIGZvciBsYWtlcyBzdXN0YWluYWJsZSBkZXZlbG9wbWVudA%3D%3D
 <ReactPlayer url="https://www.youtube.com/watch?v=vErBTHQQM1Y" controls />
-
-
 */}
+
+
+
+
 <ReactPlayer url="https://www.youtube.com/watch?v=vErBTHQQM1Y&pp=ygUoY2VudGVyIGZvciBsYWtlcyBzdXN0YWluYWJsZSBkZXZlbG9wbWVudA%3D%3D" controls />
 
 

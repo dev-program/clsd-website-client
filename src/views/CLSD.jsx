@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ReactPlayer from 'react-player';
 import { API_URL } from "../config/index";
-
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+
 import Button from '@mui/material/Button';
 
 import 'react-html5video/dist/styles.css';

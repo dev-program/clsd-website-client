@@ -490,7 +490,7 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
 
      
                 <div className= 'mt-4'>
-                <label>Publciation Type:</label> 
+                <label>Publication Type:</label> 
                 {currentTutorial.types}
                 </div>
 

@@ -1,12 +1,9 @@
 import React from 'react';
 import {
-    Container,Row,Col
-
+    Container
 } from "react-bootstrap";
-import { Button } from "@mui/material";
-import Box from '@mui/material/Box';
-import {useNavigate} from "react-router-dom"
 
+import Box from '@mui/material/Box';
 
 import Header from "../navigation/Headerdemo";
 import Navbar from "../navigation/Navdemo";
@@ -16,11 +13,8 @@ import Molbio from  "../components/ResearchUnit/molbio";
 
 import "../pages/newheader.style.css";
 const PostProgramPage = () => {
-  const navigate = useNavigate();
 
-  function handleClick() {
-    navigate(`/all-news-event`);
-  }
+
     return (
                  <div className="mt-4 header" >
         <Container   bg="primary"  className="mt-4"   >
@@ -32,7 +26,7 @@ const PostProgramPage = () => {
 
             </Box>
 
-                            <Molbio />
+              <Molbio />
 
             <Footer />
         </Container>

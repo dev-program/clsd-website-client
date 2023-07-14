@@ -1,22 +1,14 @@
 import React from 'react';
 import {
     Container,
-
 } from "react-bootstrap";
-
-
-import { Button } from "@mui/material";
 import Box from '@mui/material/Box';
-
-
 
 import Header from "../navigation/Headerdemo";
 import Navbar from "../navigation/Navdemo";
 import Footer from "../navigation/Footer";
 
-
 import AllLiterature from "../components/Literature/Literature";
-
 
 import "../pages/newheader.style.css";
 const AllNewsEventView = () => {

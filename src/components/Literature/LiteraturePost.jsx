@@ -1,16 +1,11 @@
 
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+
 import {
     Card
 } from "react-bootstrap";
-
-
-
-
-
 
 import styled from 'styled-components';
 const cardWidth = 620 ;
@@ -125,53 +120,16 @@ export default function EventPost({id, title}) {
           <Card className="mt-2 "  >
             <Style>
               <Card.Body>
-         
-
-
-                <Box sx={{   color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "20px" }}   >
-                <p align="center">
-                     {title}  
-               </p> 
-                                  </Box>
-
-
-
+                         <Typography style={{ fontFamily: "klavika", fontSize: "18px", fontWeight:"bold" ,color: '#353839 ' }} >
+                                    <p align="center">
+                                      {title}  
+                                   </p> 
+                         </Typography>         
               </Card.Body>
               </Style>
           </Card>
 
-{/*}
-
-  <Card sx={{ maxWidth: 420 }}>
-        <Style>
-  <CardActionArea>
-    <CardMedia
-     class="rounded-circle"
-      component="img"
-      height="140"
-      with="140"
-      image={imageUrl}
-      alt="image"
-
-    />
-    <CardContent>
-      <Typography gutterBottom variant="body1" component="div">
-          {firstName} {middleName} {lastName}, {suffix}
-      </Typography>
-      <Typography variant="body2" color="text.secondary">
-      {designation}
-      </Typography>
-    </CardContent>
-  </CardActionArea>
-        </Style>
-</Card>
-*/}
-
-</>
-
-
-
-
+        </>
 
   );
 }

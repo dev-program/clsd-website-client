@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import {
-    Container,Card,Col,Row,
+  Card,Col,Row,
       Form,
       FormControl,
 } from "react-bootstrap";
@@ -71,14 +71,10 @@ const filteredList = (events, search) => {
 };
 
 
-
-
   const pageCount = Math.ceil(events.length / usersPerPage);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-
-
 
 
   return (
@@ -92,7 +88,7 @@ const filteredList = (events, search) => {
         />
         </Form>
 
-    <Row className='mt-4 mb-4' >
+    <Row className='mt-4' >
     <div className="col-md-6 " >
       <Col lg={12} >
       <Row >
@@ -106,17 +102,15 @@ const filteredList = (events, search) => {
               <ResearcherPost
                 id={event.id}
                 title={event.title}
-
-              />
+                />
               </Col>
           ))}
        </Row>
        </Col>
 
-       <ReactPaginate
-
-          pageCount={pageCount}
-          onPageChange={changePage}
+       <ReactPaginate 
+       pageCount={pageCount}
+       onPageChange={changePage}
        breakClassName={'page-item'}
        breakLinkClassName={'page-link'}
        containerClassName={'pagination'}
@@ -128,27 +122,21 @@ const filteredList = (events, search) => {
        nextLinkClassName={'page-link'}
        activeClassName={'active'}
        />
-
-
-
-
       </div>
+
       <div className="col-md-6">
 
         {currentEvent ? (
 
-                <Card className='mt-4'>
-
-
-                      <Card.Body >
+                <Card >
+                <Card.Body >
                              
                                 
-                                <Box sx={{ borderBottom: 2, borderColor: 'divider' ,  color: '#353839 ', fontWeight: 'bold'}}  style={{ fontFamily: " klavika", fontSize: "24px", align:"center" }}   >
-                             
-                                <p align="center">
-                                {currentEvent.title}
-                                </p> 
-                                  </Box>
+                                 <Typography  style={{ fontFamily: "klavika", fontSize: "21px", fontWeight:"bold" ,color: '#353839 ' }} >
+                                    <p align="center">
+                                     {currentEvent.title}  
+                                        </p> 
+                                 </Typography>
                                   
                                 <Row className='mt-4' >
                                   <Col >
@@ -171,8 +159,8 @@ const filteredList = (events, search) => {
                                   </Col>
 
                                 </Row>
-                        </Card.Body>
-                        </Card>
+                 </Card.Body>
+                 </Card>
 
         ) : (
           <>

@@ -31,8 +31,9 @@ const CLSDPublication = () => {
       <Table striped bordered hover responsive>
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Degree</th>
+            <th>Student/s</th>
+            <th>Degree Sought</th>
+            <th>Title</th>          
             <th>Adviser</th>
             <th>Year</th>
             <th>Publication Type</th>
@@ -41,8 +42,9 @@ const CLSDPublication = () => {
         <tbody>
           {filteredEvents.map((event) => (
             <tr key={event.id}>
-              <td>{event.title}</td>
+              <td>{event.student}</td>
               <td>{event.degree}</td>
+              <td>{event.title}</td>
               <td>{event.adviser}</td>
               <td>{event.year}</td>
               <td>{event.types}</td>

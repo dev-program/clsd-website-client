@@ -1,19 +1,12 @@
 import React from 'react';
 import {
     Container,
-
 } from "react-bootstrap";
-
-
-import { Button } from "@mui/material";
 import Box from '@mui/material/Box';
-
-
 
 import Header from "../navigation/Headerdemo";
 import Navbar from "../navigation/Navdemo";
 import Footer from "../navigation/Footer";
-
 
 import AllNewsEvent from "./../components/Event/allNewsEvent";
 

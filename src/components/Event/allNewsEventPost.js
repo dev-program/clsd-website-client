@@ -49,14 +49,20 @@ const options = { month: 'long', day: 'numeric' , year: 'numeric'};
           image={`${API_URL}event-content/${fileName}`}
       alt="green iguana"
     />
+    
+   
     <CardContent>
-    <Typography gutterBottom variant="h8" component="div" sx={{ color: '#808080', fontWeight: 'bold' }}>
+
+    <Typography gutterBottom variant="h8" component="div" sx={{ color: '#808080', fontWeight: 'bold' }}   style={{ fontFamily: " klavika", fontSize: "14px" }}  >
         {tags}
       </Typography>
-      <Typography gutterBottom variant="h8" component="div" sx={{ color: '#4169e1', fontWeight: 'bold' }}>
+      
+
+      <Typography gutterBottom variant="h8" component="div" sx={{ color: '#353839', fontWeight: 'bold' }} style={{ fontFamily: " klavika", fontSize: "18px" }} >
         {title}
       </Typography>
-      <Typography gutterBottom variant="h10" component="div" sx={{ typography: 'body2' }}>
+
+      <Typography gutterBottom variant="h10" component="div" sx={{  color: '#808080', fontWeight: 'bold'  }} style={{ fontFamily: " klavika", fontSize: "14px" }}  >
         <CalendarMonthIcon /> {new Date(createdAt).toLocaleDateString("en-US",options)}
       </Typography>
 

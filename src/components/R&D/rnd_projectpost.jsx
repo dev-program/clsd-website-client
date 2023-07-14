@@ -130,10 +130,14 @@ const Style = styled.button`
 export default function EventPost({id, title}) {
   return (
         <>
-          <Card className="mt-4 mb-4" bg="light" align='center' >
+          <Card className="mt-2" >
             <Style>
               <Card.Body>
-                {title}
+              <Typography sx={{ color: '#353839 ' }} className="mt-4" style={{ fontFamily: "klavika", fontSize: "16px", fontWeight:"bold" }} >
+              <p align="center">
+                     {title}  
+               </p> 
+              </Typography>
               </Card.Body>
               </Style>
           </Card>
