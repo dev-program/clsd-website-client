@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-import Home from './pages/Homepage';
+import Home from './pages/homepage';
 
 import NewsEventDetail from "./views/EventDetailView";
 import AllNewsEvent from "./views/AllNewsEvent";

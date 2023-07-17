@@ -4,22 +4,24 @@ import { Container, Row, Col, Form, FormControl, Button, Modal } from "react-boo
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
-import "moment/locale/en-gb"; // Import the locale you want to use
-import { Typography } from '@mui/material';
+import "moment/locale/en-gb";
+import { Typography } from "@mui/material";
+
+
+
+
+
 
 const EventCalendar = () => {
   const [tutorials, setTutorials] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
   const [published, setPublished] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [editingEvent, setEditingEvent] = useState(null);
 
   const [newEvent, setNewEvent] = useState({
     title: "",
     description: "",
-
-    createAt: null,
+    createdAt: null,
     updatedAt: null,
   });
 
@@ -28,7 +30,7 @@ const EventCalendar = () => {
   }, []);
 
   const retrieveTutorials = () => {
-    TutorialService.getAllPublic()
+    TutorialService.getAll()
       .then((response) => {
         setTutorials(response.data);
         console.log(response.data);
@@ -38,71 +40,61 @@ const EventCalendar = () => {
       });
   };
 
+  const refreshTutorials = () => {
+    retrieveTutorials();
+  };
+
   const localizer = momentLocalizer(moment);
 
-  const events = tutorials.map((tutorial) => {
-    console.log(tutorial.createdAt, tutorial.updatedAt);
-    return {
-      id: tutorial.id,
-      title: tutorial.title,
-      start: moment(tutorial.createdAt).toDate(),
-      end: moment(tutorial.updatedAt).toDate(),
-    };
-  });
-  
+  const events = tutorials.map((tutorial) => ({
+    id: tutorial.id,
+    title: tutorial.title,
+    description: tutorial.description,
 
+    start: moment(tutorial.createdAt).toDate(),
+    end: moment(tutorial.createdAt).toDate(),
+  }));
 
   const handleSelectSlot = ({ start, end }) => {
+    const selectedStartDate = moment(start);
+    const selectedEndDate = moment(end);
+
+    // Set the desired time, e.g., 10:00 AM
+    const desiredStartTime = moment().set({ hour: 10, minute: 0, second: 0 });
+    const desiredEndTime = moment().set({ hour: 11, minute: 0, second: 0 });
+
+    // Set the date part of the selected start and end times
+    const updatedStartDate = selectedStartDate
+      .set({ hour: desiredStartTime.hour(), minute: desiredStartTime.minute() })
+      .toDate();
+    const updatedEndDate = selectedEndDate
+      .set({ hour: desiredEndTime.hour(), minute: desiredEndTime.minute() })
+      .toDate();
+
     setNewEvent((prevState) => ({
       ...prevState,
-      createdAt: start,
-      updatedAt: end, // Update the updatedAt value to the selected end time
+      createdAt: updatedStartDate,
+      updatedAt: updatedEndDate,
     }));
+
+    setShowModal(true);
+    setEditingEvent(null);
+  };
+
+  const handleEditEvent = (event) => {
+    setEditingEvent(event);
+    setNewEvent({
+      id: event.id,
+      title: event.title,
+      description: event.description,
+      published: event.status,
+      createdAt: event.start,
+      updatedAt: event.end,
+    });
     setShowModal(true);
   };
 
-  
-
-
   const handleCloseModal = () => {
-    setShowModal(false);
-    setNewEvent({
-      title: "",
-      createdAt: null,
-      updatedAt: null
-    });
-  };
-
-
-  const onChangeTitle = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const onChangeDescription = (e) => {
-    setDescription(e.target.value);
-  };
-
-  
-  const handleCreateEvent = (e) => {
-    e.preventDefault();
-  
-    const formData = new FormData();
-    formData.append("title", newEvent.title);
-    formData.append("description", newEvent.description);
-    formData.append("published", newEvent.published);
-    formData.append("createdAt", newEvent.createdAt);
-    formData.append("updatedAt", newEvent.updatedAt); // Update the assignment of updatedAt
-  
-    TutorialService.create(formData)
-      .then((response) => {
-        console.log(response);
-        // Perform any additional actions after successful creation
-      })
-      .catch((error) => {
-        console.log(error);
-        // Handle the error
-      });
-  
     setShowModal(false);
     setNewEvent({
       title: "",
@@ -110,15 +102,76 @@ const EventCalendar = () => {
       createdAt: null,
       updatedAt: null,
     });
+    setEditingEvent(null);
   };
-  
+
+  const handleCreateEvent = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("title", newEvent.title);
+    formData.append("description", newEvent.description);
+    formData.append("createdAt", newEvent.createdAt);
+    formData.append("updatedAt", newEvent.updatedAt);
+
+    TutorialService.create(formData)
+      .then((response) => {
+        console.log(response);
+        refreshTutorials(); // Refresh tutorials after creating event
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    handleCloseModal();
+  };
+
+  const handleUpdateEvent = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("id", editingEvent.id); // Use the id from editingEvent
+    formData.append("title", newEvent.title);
+    formData.append("description", newEvent.description);
+    formData.append("published", published); // Update the published status
+    formData.append("createdAt", newEvent.createdAt);
+    formData.append("updatedAt", newEvent.updatedAt);
+
+    TutorialService.update(editingEvent.id, formData) // Pass the id to TutorialService.update
+      .then((response) => {
+        console.log(response);
+        refreshTutorials(); // Refresh tutorials after updating event
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    handleCloseModal();
+  };
+
+  const handleDeleteEvent = () => {
+    if (!editingEvent) return;
+
+    TutorialService.remove(editingEvent.id)
+      .then((response) => {
+        console.log(response);
+        refreshTutorials(); // Refresh tutorials after deleting event
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    handleCloseModal();
+  };
+
+  const handlePublishToggle = () => {
+    setPublished((prevPublished) => !prevPublished);
+  };
 
   return (
     <>
       <Row>
         <Col lg={8} className="mt-4">
           <Calendar
-            views={["day", "agenda", "work_week", "month"]}
+            views={["month", "week", "day", "agenda"]}
             selectable
             localizer={localizer}
             defaultDate={new Date()}
@@ -126,16 +179,20 @@ const EventCalendar = () => {
             events={events}
             style={{ height: "80vh" }}
             onSelectSlot={handleSelectSlot}
+            onSelectEvent={handleEditEvent} // Added event selection handler
           />
+
+
         </Col>
-        <Col lg={4}>
-        </Col>
+        <Col lg={4}></Col>
       </Row>
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <Typography variant="h5">Create Event</Typography>
+            <Typography variant="h5">
+              {editingEvent ? "Edit Event" : "Create Event"}
+            </Typography>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -148,7 +205,9 @@ const EventCalendar = () => {
                 type="text"
                 placeholder="Enter event title"
                 value={newEvent.title}
-                onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+                onChange={(e) =>
+                  setNewEvent({ ...newEvent, title: e.target.value })
+                }
               />
             </Form.Group>
 
@@ -160,11 +219,11 @@ const EventCalendar = () => {
                 type="text"
                 placeholder="Enter event description"
                 value={newEvent.description}
-                onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
+                onChange={(e) =>
+                  setNewEvent({ ...newEvent, description: e.target.value })
+                }
               />
             </Form.Group>
-
-
 
             <Form.Group controlId="eventStart">
               <Form.Label>
@@ -172,8 +231,17 @@ const EventCalendar = () => {
               </Form.Label>
               <Form.Control
                 type="datetime-local"
-                value={newEvent.createdAt ? moment(newEvent.createdAt).format("YYYY-MM-DDTHH:mm") : ""}
-                onChange={(e) => setNewEvent({ ...newEvent, createdAt: moment(e.target.value).toDate() })}
+                value={
+                  newEvent.createdAt
+                    ? moment(newEvent.createdAt).format("YYYY-MM-DDTHH:mm")
+                    : ""
+                }
+                onChange={(e) =>
+                  setNewEvent({
+                    ...newEvent,
+                    createdAt: moment(e.target.value).toDate(),
+                  })
+                }
               />
             </Form.Group>
             <Form.Group controlId="eventEnd">
@@ -182,9 +250,30 @@ const EventCalendar = () => {
               </Form.Label>
               <Form.Control
                 type="datetime-local"
-                value={newEvent.updatedAt ? moment(newEvent.updatedAt).format("YYYY-MM-DDTHH:mm") : ""}
-                onChange={(e) => setNewEvent({ ...newEvent, updatedAt: moment(e.target.value).toDate() })}
+                value={
+                  newEvent.updatedAt
+                    ? moment(newEvent.updatedAt).format("YYYY-MM-DDTHH:mm")
+                    : ""
+                }
+                onChange={(e) =>
+                  setNewEvent({
+                    ...newEvent,
+                    updatedAt: moment(e.target.value).toDate(),
+                  })
+                }
               />
+            </Form.Group>
+
+            <Form.Group controlId="eventPublish">
+              <Form.Label>
+                <Typography variant="body1">Publish</Typography>
+              </Form.Label>
+              <Button
+                variant={published ? "primary" : "secondary"}
+                onClick={handlePublishToggle}
+              >
+                {published ? "Published" : "Unpublished"}
+              </Button>
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -192,14 +281,22 @@ const EventCalendar = () => {
           <Button variant="secondary" onClick={handleCloseModal}>
             <Typography variant="body1">Cancel</Typography>
           </Button>
-          <Button variant="primary" onClick={handleCreateEvent}>
-            <Typography variant="body1">Create</Typography>
-          </Button>
+          {editingEvent ? (
+            <>
+              <Button variant="danger" onClick={handleDeleteEvent}>
+                <Typography variant="body1">Delete</Typography>
+              </Button>
+              <Button variant="primary" onClick={handleUpdateEvent}>
+                <Typography variant="body1">Update</Typography>
+              </Button>
+            </>
+          ) : (
+            <Button variant="primary" onClick={handleCreateEvent}>
+              <Typography variant="body1">Create</Typography>
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
-
-
-      
     </>
   );
 };

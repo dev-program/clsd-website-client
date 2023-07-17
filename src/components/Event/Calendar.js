@@ -1,8 +1,6 @@
-
-
 import React, { useState, useEffect } from "react";
-import TutorialService from "../../services/event.service";
-import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
+import TutorialService from "../../services/calendar.service";
+import { Container, Row, Col, Form, FormControl, Modal, Button } from "react-bootstrap";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
@@ -10,6 +8,8 @@ import "moment/locale/en-gb"; // Import the locale you want to use
 
 const EventCalendar = () => {
   const [tutorials, setTutorials] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     retrieveTutorials();
@@ -35,41 +35,55 @@ const EventCalendar = () => {
     end: moment(tutorial.createdAt).toDate(),
   }));
 
+  const handleSelectEvent = (event) => {
+    setSelectedEvent(event);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedEvent(null);
+  };
+
   return (
     <>
-
-<Row>
- <Col lg={8} className="mt-4" >
-
-
-        
+      <Row>
+        <Col lg={8} className="mt-4">
           <Calendar
-        views={["day", "agenda", "work_week", "month"]}
-        selectable
-        localizer={localizer}
-        defaultDate={new Date()}
-        defaultView="month"
-        events={events}
-        style={{ height: "80vh" }}
-      
-      />
-       
-       </Col>
-                      <Col lg={4}>
+            views={["month", "week", "day", "agenda"]}
+            selectable
+            localizer={localizer}
+            defaultDate={new Date()}
+            defaultView="month"
+            events={events}
+            style={{ height: "80vh" }}
+            onSelectEvent={handleSelectEvent} // Added event selection callback
+          />
+        </Col>
+        <Col lg={4}></Col>
+      </Row>
 
-
-
-                      </Col>
-                      {/* Widgets ends here */}
-                 
-                  </Row>
-
-
-
-
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedEvent && selectedEvent.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {selectedEvent && (
+            <div>
+        
+              <p>{selectedEvent.start.toString()}</p>
+              {/* Add other event information here */}
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
 
 export default EventCalendar;
-

@@ -89,7 +89,7 @@ export default function ButtonAppBar() {
 
           </NavDropdown>
           <Nav.Link as={Link} to="/E-sentry">E-sentry</Nav.Link>
-
+          <Nav.Link as={Link} to="/all-calendar-event">Calendar</Nav.Link>
           </Hidden>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
