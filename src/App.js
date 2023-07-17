@@ -9,6 +9,7 @@ import Home from './pages/Homepage';
 
 import NewsEventDetail from "./views/EventDetailView";
 import AllNewsEvent from "./views/AllNewsEvent";
+import Calendar from "./views/Calendar";
 
 
 import AllLiterature from "./views/AllLiterature";
@@ -98,6 +99,10 @@ import TagList from './protected_pages/TagPage';
 import TagAdd from './protected_components/TagAdd';
 
 
+import CalendarEvent from './protected_pages/Calendar';
+
+
+
 
 import UseScrollToTop from './ScrollTop';
 import ScrollToTop from 'react-scroll-to-top';
@@ -143,6 +148,8 @@ const App = () => (
 
       <Route  path="/news-event/:id"    element={<NewsEventDetail />} />   
        <Route exact path="/all-news-event"    element={<AllNewsEvent />} />
+       <Route exact path="/all-calendar-event"    element={<Calendar />} />
+
     
        <Route exact path="/all-literature"    element={<AllLiterature />} />
 
@@ -229,6 +236,11 @@ const App = () => (
 
         <Route path="/tag_list" element={<RequireAuth>   <TagList />  </RequireAuth>} />
         <Route path="/tag_add" element={<RequireAuth>   <TagAdd />  </RequireAuth>} />
+
+
+        <Route path="/calendar-event" element={<RequireAuth>   <CalendarEvent />  </RequireAuth>} />
+
+
 
       </Routes>
       <UseScrollToTop />

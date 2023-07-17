@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 
 import Typography from '@mui/material/Typography';
@@ -177,3 +178,5 @@ const filteredList = (events, search) => {
 };
 
 export default EventsList;
+
+
