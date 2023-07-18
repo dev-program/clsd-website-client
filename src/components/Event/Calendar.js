@@ -48,7 +48,7 @@ const EventCalendar = () => {
   return (
     <>
       <Row>
-        <Col lg={8} className="mt-4">
+     
           <Calendar
             views={["month", "week", "day", "agenda"]}
             selectable
@@ -59,8 +59,7 @@ const EventCalendar = () => {
             style={{ height: "80vh" }}
             onSelectEvent={handleSelectEvent} // Added event selection callback
           />
-        </Col>
-        <Col lg={4}></Col>
+      
       </Row>
 
       <Modal show={showModal} onHide={handleCloseModal}>
