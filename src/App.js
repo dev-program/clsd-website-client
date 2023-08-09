@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -135,11 +135,11 @@ const App = () => (
 
   
   <div>
-    <Router>
+    <Router >
       <Routes>
         <Route exact path="/" element={<Home />} />
-       
-      
+        <Route exact path="/lake-sustainable-development" element={<Home />} />
+
       
    
 
