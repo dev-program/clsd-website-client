@@ -91,10 +91,16 @@ export default AuthService;
 
 import axios from "axios";
 
-const API_URL = "http://localhost:3001/api/auth/";
+
+
+
+import { API_URL_AUTH} from "../config/index"
+
+
+//const API_URL = "http://localhost:3001/api/auth/";
 
 const register = (username, email, password) => {
-  return axios.post(API_URL + "signup", {
+  return axios.post(API_URL_AUTH + "signup", {
     username,
     email,
     password,
@@ -103,7 +109,7 @@ const register = (username, email, password) => {
 
 const login = (email, password) => {
   return axios
-    .post(API_URL + "signin", {
+    .post(API_URL_AUTH + "signin", {
       email,
       password,
     })
@@ -159,7 +165,7 @@ const changePassword = (oldPassword, newPassword, accessToken = null) => {
 
   return axios
     .put(
-      API_URL + "changePassword",
+      API_URL_AUTH + "changePassword",
       {
         oldPassword,
         newPassword,
